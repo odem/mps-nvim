@@ -3,7 +3,7 @@ local alpha = require("alpha")
 local dashboard = require("alpha.themes.dashboard")
 -- Set header
 dashboard.section.header.val = {
-	"                                                                         ",
+	-- "                                                                         ",
 	"                  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀                  ",
 	"                  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⠟⠋⠉⠉⠻⢦⣄⠀⠀⠀⠀⠀⠀⠀                  ",
 	"                  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡴⠾⠉⠉⠉⠛⢷⣄⠀⠀⠀⠀⠈⡻⣆⠀⠀⠀⠀⠀⠀                  ",
@@ -24,7 +24,7 @@ dashboard.section.header.val = {
 	"                  ⠀⠀⠀⠀⠀⢻⣆⡈⠣⠤⠴⠶⠒⠒⠒⠒⠲⠶⠤⣄⣀⣀⣀⣤⠖⢲⣼⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀                  ",
 	"                  ⠀⠀⠀⠀⠀⠘⣿⣤⣤⣀⡀⠀⠀⠀⠀⠀⠀⠒⠒⠒⠂⠛⢚⠛⠀⢸⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀                  ",
 	"                  ⠀⠀⠀⠀⠀⠀⠸⣧⢱⡀⠀⠀⠐⠲⣄⠀⠀⠀⠀⠀⠀⢀⡿⠀⠀⠀⠘⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀                  ",
-	"                                                                         "
+	"                                                                         ",
 	-- "                   -- a M3sS@g3 2 tHe P@raN0iD --                        ",
 	-- "++++++++++[>+>+++>+++++++>++++++++++<<<<-]>>>>-----------.++++++++++++.++",
 	-- "++++++++++++.<<++++++++++++++.------------.>>----------.<<.>>--------.+++",
@@ -73,19 +73,12 @@ dashboard.button = function(sc, txt, keybind, keybind_opts)
 end
 -- Set menu
 dashboard.section.buttons.val = {
-	dashboard.button("n", "📄 >                            New file", ":ene <BAR> startinsert <CR>"),
-	dashboard.button("e", "📁 >                            Explore",
-		":NvimTreeToggle<CR> | :wincmd p<CR> | :close<CR>"),
-	dashboard.button("f", "🔍 >                            Find file",
-		":cd $HOME/Workspace | Telescope find_files<CR>"),
-	dashboard.button("r", "⌛ >                            Recent", ":Telescope oldfiles<CR>"),
-	dashboard.button("h", "🚑 >                            Health", ":checkhealth<CR>"),
-	dashboard.button("s", "🔧 >                            Settings",
-		":e $MYVIMRC | :cd %:p:h | wincmd k | pwd<CR>"),
-	dashboard.button("t", "💻 >                            Terminal", ":ToggleTerm<CR>"),
-	dashboard.button("l", "😴 >                            Lazy", ":Lazy! sync<CR>"),
-	dashboard.button("m", "🔨 >                            Mason", ":Mason<CR>"),
-	dashboard.button("q", "❌ >                            Quit", ":qa<CR>"),
+	dashboard.button("n", "  >                            New file", ":ene <BAR> startinsert <CR>", {}),
+	dashboard.button("r", "  >                            Recent", ":Telescope oldfiles<CR>", {}),
+	dashboard.button("t", "  >                            Terminal", ":ToggleTerm<CR>", {}),
+	dashboard.button("l", "😴 >                            Lazy", ":Lazy! sync<CR>", {}),
+	dashboard.button("m", "󱌣  >                            Mason", ":Mason<CR>", {}),
+	dashboard.button("q", "❌ >                            Quit", ":qa<CR>", {}),
 }
 dashboard.section.buttons.opts = { spacing = 0 }
 
@@ -94,8 +87,8 @@ local hi_top_section = {
 	val = "┌───────────────────────────────────────────────────────────────────────┐",
 	opts = {
 		position = "center",
-		hl = "Type"
-	}
+		hl = "Type",
+	},
 }
 
 local hi_middle_section = {
@@ -103,8 +96,8 @@ local hi_middle_section = {
 	val = " ",
 	opts = {
 		position = "center",
-		hl = "EcovimHeaderInfo"
-	}
+		hl = "EcovimHeaderInfo",
+	},
 }
 
 local hi_bottom_section = {
@@ -112,8 +105,8 @@ local hi_bottom_section = {
 	val = " ",
 	opts = {
 		position = "center",
-		hl = "Type"
-	}
+		hl = "Type",
+	},
 }
 
 dashboard.section.footer = {
@@ -121,10 +114,9 @@ dashboard.section.footer = {
 	val = "└───────────────────────────────────────────────────────────────────────┘",
 	opts = {
 		position = "center",
-		hl = "Type"
+		hl = "Type",
 	},
 }
-
 
 local section = {
 	header = dashboard.section.header,
@@ -138,7 +130,7 @@ local opts = {
 	layout = {
 		{ type = "padding", val = 0 },
 		section.header,
-		{ type = "padding", val = 5 },
+		{ type = "padding", val = 1 },
 		section.hi_top_section,
 		section.hi_middle_section,
 		{ type = "padding", val = 0 },
@@ -148,10 +140,9 @@ local opts = {
 		section.footer,
 	},
 	opts = {
-		margin = 0
+		margin = 0,
 	},
 }
-
 
 -- Setup
 alpha.setup(opts)

@@ -16,6 +16,7 @@ M.getplugins = function()
 		require("mps-core.luasnip.luasnip-repo"),
 		require("mps-core.comment.comment-repo"),
 		require("mps-core.themes.themes-repo"),
+		require("mps-core.snipe.snipe-repo"),
 	}
 end
 M.configure = function()
@@ -30,6 +31,7 @@ M.configure = function()
 	require("mps-core.luasnip.luasnip-config")
 	require("mps-core.comment.comment-config")
 	require("mps-core.themes.themes-config")
+	require("mps-core.snipe.snipe-config")
 
 	-- Keymaps
 	require("mps-core.keymaps")
@@ -46,4 +48,3 @@ M.configure = function()
 	require("mps-core.vars")
 end
 return M
-

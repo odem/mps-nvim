@@ -61,7 +61,7 @@ local config = function()
 		root_dir = lspconfig.util.root_pattern("package.json", ".git"),
 		single_file_support = true,
 	})
-	lspconfig.tsserver.setup({
+	lspconfig.ts_ls.setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
 		filetypes = {
@@ -199,7 +199,7 @@ local config = function()
 		settings = {
 			bashIde = {
 				shellcheckPath = "shellcheck",
-				shellcheckArguments = "-a -C -S info -W 1 -x",
+				shellcheckArguments = "--color=always -S style -W 1 -x",
 				logLevel = "info",
 				includeAllWorkspaceSymbols = true,
 				enableSourceErrorDiagnostics = true,
@@ -218,26 +218,26 @@ local config = function()
 		on_attach = on_attach,
 		capabilities = capabilities,
 	})
-	-- lspconfig.pyright.setup({
-	-- 	on_attach = on_attach,
-	-- 	capabilities = capabilities,
-	-- 	settings = {
-	-- 		pyright = {
-	-- 			disableOrganizeImports = false,
-	-- 			disableLanguageServices = false,
-	-- 			disableTaggedHints = false,
-	-- 			analysis = {
-	-- 				useLibraryCodeForTypes = true,
-	-- 				autosearchPaths = true,
-	-- 				diagnosticMode = "workspace",
-	-- 				autoImportCompletions = true,
-	-- 			},
-	-- 			venvPath = vim.fn.getcwd() .. "/.venv",
-	-- 			pythonPath = vim.fn.getcwd() .. "/.venv/bin/python",
-	-- 		},
-	-- 		python = vim.fn.getcwd() .. "/.venv/bin/python",
-	-- 	},
-	-- })
+	lspconfig.pyright.setup({
+		on_attach = on_attach,
+		capabilities = capabilities,
+		settings = {
+			pyright = {
+				disableOrganizeImports = false,
+				disableLanguageServices = false,
+				disableTaggedHints = false,
+				analysis = {
+					useLibraryCodeForTypes = true,
+					autosearchPaths = true,
+					diagnosticMode = "workspace",
+					autoImportCompletions = true,
+				},
+				venvPath = vim.fn.getcwd() .. "/.venv",
+				pythonPath = vim.fn.getcwd() .. "/.venv/bin/python",
+			},
+			python = vim.fn.getcwd() .. "/.venv/bin/python",
+		},
+	})
 	lspconfig.taplo.setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
@@ -330,18 +330,18 @@ local config = function()
 		),
 		single_file_support = true,
 	})
-	-- lspconfig.csharp_ls.setup({
-	-- 	on_attach = on_attach,
-	-- 	capabilities = vscode_capabilities,
-	-- 	filetypes = {
-	-- 		"cs",
-	-- 	},
-	-- 	settings = {},
-	-- 	init_options = {
-	-- 		AutomaticWorkspaceInit = true,
-	-- 	},
-	-- 	single_file_support = true,
-	-- })
+	lspconfig.csharp_ls.setup({
+		on_attach = on_attach,
+		capabilities = vscode_capabilities,
+		filetypes = {
+			"cs",
+		},
+		settings = {},
+		init_options = {
+			AutomaticWorkspaceInit = true,
+		},
+		single_file_support = true,
+	})
 	lspconfig.omnisharp.setup({
 		on_attach = on_attach,
 		capabilities = vscode_capabilities,
@@ -361,7 +361,7 @@ local config = function()
 	-- # Linters
 	-- ############################################################################
 	local luacheck = require("efmls-configs.linters.luacheck")
-	local pylint = require("efmls-configs.linters.pylint")
+	local ruff = require("efmls-configs.linters.ruff")
 	local eslint_d = require("efmls-configs.linters.eslint_d")
 	local shellcheck = require("efmls-configs.linters.shellcheck")
 	local stylint = require("efmls-configs.linters.stylelint")
@@ -451,9 +451,9 @@ local config = function()
 		},
 		settings = {
 			languages = {
-				sh = { shellcheck, shellharden },
+				sh = { shellcheck },
 				lua = { luacheck, stylua },
-				python = { pylint, black },
+				python = { ruff, black },
 				typescript = { eslint_d, prettierd },
 				javascript = { eslint_d, prettierd },
 				html = { stylint, prettierd },

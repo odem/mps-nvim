@@ -12,7 +12,7 @@ IFS=', ' read -r -a NPM <<<"neovim vint luacheck"
 NEOVIM_FOLDER=/opt/mps/tools/nvim
 RUSTUP_FOLDER=/opt/mps/tools/rustup
 LAZYGIT_FOLDER=/opt/mps/tools/lazygit
-NEOVIM_URL=https://github.com/neovim/neovim/releases/download/v0.9.4/nvim-linux64.tar.gz
+NEOVIM_URL=https://github.com/neovim/neovim/releases/download/v0.11.3/nvim-linux-x86_64.tar.gz
 LAZYGITLATEST_URL="https://api.github.com/repos/jesseduffield/lazygit/releases/latest"
 LAZYGIT_URL="https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit"
 RUSTUP_URL=https://sh.rustup.rs
@@ -35,9 +35,12 @@ while getopts "a:u:p:" o; do
 done
 # --- Core functions ----------------------------------------------------------
 function do_install() {
+    
+    # === Check isntallation ===
     if [[ "$(which nvim)" != "" ]]; then
         return 0
     fi
+    
     # # === packages ===
     apt-get -y install "${ALL[@]}"
 
@@ -47,8 +50,10 @@ function do_install() {
     python3 -m venv nvim
     nvim/bin/python -m pip install debugpy pynvim
     cd - || exit 1
+    
     # === npm ===
     npm install -g "${NPM[@]}"
+
     # === lazygit ===
     LAZYGIT_VERSION=$(curl -s "$LAZYGITLATEST_URL" |
         grep -Po '"tag_name": "v\K[^"]*')
@@ -58,7 +63,8 @@ function do_install() {
         "${LAZYGIT_URL}_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
     tar xf "$LAZYGIT_FOLDER"/lazygit.tar.gz -C "$LAZYGIT_FOLDER"
     install "$LAZYGIT_FOLDER"/lazygit /usr/local/bin
-    rm -rf "$LAZYGIT_FOLDER"/lazygit.tar.gz #$LAZYGIT_FOLDER/lazygit
+    rm -rf "$LAZYGIT_FOLDER"/lazygit.tar.gz
+    
     # === Rustup ===
     mkdir -p "$RUSTUP_FOLDER"
     wget "$RUSTUP_URL" -O "$RUSTUP_FOLDER"/rustup.sh
@@ -71,24 +77,28 @@ function do_install() {
 
     # === nvim ===
     mkdir -p "$NEOVIM_FOLDER"
-    wget "$NEOVIM_URL" -O "$NEOVIM_FOLDER"/nvim-linux64.tar.gz
-    tar xzvf "$NEOVIM_FOLDER"/nvim-linux64.tar.gz -C "$NEOVIM_FOLDER"
+    wget "$NEOVIM_URL" -O "$NEOVIM_FOLDER"/nvim-linux-x86_64.tar.gz
+    tar xzvf "$NEOVIM_FOLDER"/nvim-linux-x86_64.tar.gz -C "$NEOVIM_FOLDER"
     cd /usr/local/bin || exit 1
-    ln -s "$NEOVIM_FOLDER"/nvim-linux64/bin/nvim /usr/local/bin/nvim
+    ln -s "$NEOVIM_FOLDER"/nvim-linux-x86_64/bin/nvim /usr/local/bin/nvim
     cd - || exit 1
 }
 function do_uninstall() {
+    
     # === packages ===
     apt --yes remove "${ALL[@]}"
     rm -rf /usr/local/bin/nvim
+    
     # === npm ===
     npm uninstall -g "${NPM[@]}"
+    
     # === cargo ===
     cargo uninstall install "${CARGO[@]}"
 }
 function do_configure() {
-    mkdir -p ~/.config/nvim
+    # 
     # === nvim config ===
+    mkdir -p ~/.config/nvim
     cp -r dotfiles/.config/nvim -t ~/.config/
 }
 # --- Execute task ------------------------------------------------------------

@@ -1,13 +1,13 @@
 local K = require("mps-core.helpers")
 
 -- Neogen
-K.map("n", "gnc", "<cmd>Neogen<CR>", { desc = "Insert Neogen comment" })
+-- K.map("n", "gnc", "<cmd>Neogen<CR>", { desc = "Insert Neogen comment" })
 
 -- Neoformat
 K.map("n", "gnf", "<cmd>Neoformat<CR>", { desc = "Format with Neoformat" })
 
 -- Neogen
-K.map("n", "gso", "<cmd>SymbolsOutline<CR>", { desc = "Toggle Symbol Outliner" })
+-- K.map("n", "gso", "<cmd>SymbolsOutline<CR>", { desc = "Toggle Symbol Outliner" })
 
 -- toggleterm
 K.map("n", "<leader>üü", "<cmd>lua _HTOP_TOGGLE()<CR>", { desc = "ToggleTerm Htop" })
@@ -34,6 +34,9 @@ end, { desc = "Recent Projects" })
 
 -- vim-rest-console
 K.map("n", "<A-r>", ":call VrcQuery()<CR>", { desc = "Vrc Query ([r]est)" })
+
+-- dismiss noice
+K.map("n", "<C-m>", "<cmd>NoiceDismiss<CR>", { desc = "Dismiss noice" })
 
 -- Yanky
 K.map("x", "p", "<Plug>(YankyPutAfter)", { desc = "" })

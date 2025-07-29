@@ -30,6 +30,7 @@ local opts = {
 		"mdformat",
 		"json-lsp",
 		"jq",
+		"tree-sitter-cli",
 		"texlab",
 		"latexindent",
 		"lemminx",
@@ -44,7 +45,6 @@ local opts = {
 		"gersemi",
 		"clangd",
 		"clang-format",
-		"csharp-language-server",
 	},
 	automatic_installation = true,
 }
