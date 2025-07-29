@@ -96,7 +96,7 @@ function do_uninstall() {
     cargo uninstall install "${CARGO[@]}"
 }
 function do_configure() {
-    # 
+    #
     # === nvim config ===
     mkdir -p ~/.config/nvim
     cp -r dotfiles/.config/nvim -t ~/.config/
