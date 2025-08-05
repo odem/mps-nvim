@@ -12,14 +12,14 @@ K.map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><Esc>", { desc = "Save file" }
 K.map({ "i", "v", "n", "s" }, "<A-S>", "<cmd>source %<cr><Esc>", { desc = "Source file" })
 
 -- Sessions
-K.map("n", "<leader>ss", "<cmd>mksession! ~/.config/nvim/last_session.vim<CR>", { desc = "Store session" })
-K.map("n", "<leader>sr", "<cmd>source ~/.config/nvim/last_session.vim<CR>", { desc = "Restore session" })
+K.map("n", "<leader>ss", "<cmd>mksession! ~/.local/state/nvim/last_session.vim<CR>", { desc = "Store session" })
+K.map("n", "<leader>sr", "<cmd>source ~/.local/state/nvim/last_session.vim<CR>", { desc = "Restore session" })
 
 -- Toggle Relativenumbers
 K.map("n", "<leader>#", "<cmd>set rnu!<CR>", { desc = "Toggle line numbers" })
 -- splits
 K.map("n", "<leader>vs", "<cmd>split %<CR>", { desc = "Split horizontal" })
-K.map("n", "<leader>vv", "<cmd>vsplit %<CR>", { desc = "Split vertical" })
+K.map("n", "<leader>hs", "<cmd>vsplit %<CR>", { desc = "Split vertical" })
 
 -- Better split navigation
 K.map("n", "<S-Left>", "<C-w>h", { desc = "WindowMove left" })
