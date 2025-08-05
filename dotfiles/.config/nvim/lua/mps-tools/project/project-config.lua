@@ -1,7 +1,7 @@
 require("project_nvim").setup({
 	-- Manual mode doesn't automatically change your root directory, so you have
 	-- the option to manually do so using `:ProjectRoot` command.
-	manual_mode = false,
+	manual_mode = true,
 
 	-- Methods of detecting the root directory. **"lsp"** uses the native neovim
 	-- lsp, while **"pattern"** uses vim-rooter like glob pattern matching. Here
@@ -40,4 +40,4 @@ require("project_nvim").setup({
 })
 require("telescope").load_extension("projects")
 local K = require("mps-core.helpers")
-K.map("n", "<A-p>", "<cmd>Telescope projects<CR>", { desc = "WindowMove left" })
+K.map("n", "<A-p>", "<cmd>Telescope projects<CR>", { desc = "[p]rojects view" })
