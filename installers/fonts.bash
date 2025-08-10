@@ -3,7 +3,7 @@
 DEFAULT="fonts-font-awesome fonts-fork-awesome wget unzip fontconfig"
 IFS=', ' read -r -a ALL <<< "$DEFAULT"
 # --- Font-URLs ---------------------------------------------------------------
-FONTDIR=/opt/mps/tools/fonts
+FONTDIR=/usr/share/fonts
 FONTS_URL_AWESOME=https://use.fontawesome.com/releases/v6.2.1/fontawesome-free-6.2.1-desktop.zip
 FONTS_URL_JETBRAINS=https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/JetBrainsMono.zip
 FONTS_URL_MONOID=https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/Monoid.zip
