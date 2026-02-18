@@ -1,7 +1,7 @@
 #!/bin/bash
 # --- Packages ----------------------------------------------------------------
 REQUIRED="git make gcc gdb wget bzip2 curl build-essential lldb libncurses-dev"
-TOOLS="ruby npm fzf fd-find rr ripgrep shellcheck xclip xsel"
+TOOLS="ruby npm fzf fd-find rr ripgrep shellcheck xclip xsel tree-sitter-cli"
 LINTER="luarocks chktex"
 PYTHON_BASE="python3.13 python3.13-venv python3-pip"
 PYTHON_EXTRAS="black flake8 pylint mypy python3-neovim python3-pynvim"
