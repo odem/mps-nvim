@@ -1,9 +1,9 @@
 #!/bin/bash
 # --- Packages ----------------------------------------------------------------
 REQUIRED="git make gcc gdb wget bzip2 curl build-essential lldb libncurses-dev"
-TOOLS="yarn ruby npm fzf fd-find rr ripgrep shellcheck xclip xsel"
+TOOLS="ruby npm fzf fd-find rr ripgrep shellcheck xclip xsel"
 LINTER="luarocks chktex"
-PYTHON_BASE="python3 python3-venv python3-pip"
+PYTHON_BASE="python3.13 python3.13-venv python3-pip"
 PYTHON_EXTRAS="black flake8 pylint mypy python3-neovim python3-pynvim"
 IFS=', ' read -r -a ALL <<<"$REQUIRED $TOOLS $LINTER $PYTHON_BASE $PYTHON_EXTRAS"
 IFS=', ' read -r -a CARGO <<<"fd-find tree-sitter-cli"
@@ -12,7 +12,7 @@ IFS=', ' read -r -a NPM <<<"neovim vint luacheck"
 NEOVIM_FOLDER=/opt/mps/tools/nvim
 RUSTUP_FOLDER=/opt/mps/tools/rustup
 LAZYGIT_FOLDER=/opt/mps/tools/lazygit
-NEOVIM_URL=https://github.com/neovim/neovim/releases/download/v0.11.3/nvim-linux-x86_64.tar.gz
+NEOVIM_URL=https://github.com/neovim/neovim/releases/download/v0.11.6/nvim-linux-x86_64.tar.gz
 LAZYGITLATEST_URL="https://api.github.com/repos/jesseduffield/lazygit/releases/latest"
 LAZYGIT_URL="https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit"
 RUSTUP_URL=https://sh.rustup.rs
